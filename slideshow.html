@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <title>W3.CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
+    <style>
+        .mySlides {display:none;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		max-width:1000px;}
+		body {background-color: black;margin: 0;}
+
+    </style>
+    <body>
+        <div>
+            <textarea class="textarea-slide form-control" rows="5" placeholder="Paste links here; separate with Enter"></textarea>
+            <button class="btn-start-slide btn btn-default">Start</button>
+            <button class="btn-stop-slide btn btn-default" style="display:none">Stop</button>
+
+            <button class="btn-pause-slide btn btn-default" style="display:none">Pause</button>
+            <button class="btn-play-slide btn btn-default" style="display:none">Play</button>
+        </div>
+        <div class="w3-content w3-section slide-container" style="max-width:1000px; " </div>
+        <script>
+		
+//style="max-width:500px">
+
+            $('.btn-start-slide').click(function () {
+                $('.slide-container').empty();
+                if (typeof (slideTimeout) != 'undefined') {
+                    clearTimeout(slideTimeout);
+                }
+                var arrayOfLines = $('.textarea-slide').val().split('\n');
+                $.each(arrayOfLines, function (index, item) {
+                    $html = '<img class="mySlides" src="' + item + '" >';
+                    $('.slide-container').append($html);
+                });
+                $('.btn-start-slide').hide();
+                $('.textarea-slide').slideUp(300);
+				$('.btn-pause-slide').show();
+				$('.btn-stop-slide').show();
+                carousel();
+            });
+
+            $('.btn-stop-slide').click(function () {
+                $('.slide-container').empty();
+                clearTimeout(slideTimeout);
+
+                $('.btn-start-slide').show();
+                $('.textarea-slide').slideDown(300);
+				$('.btn-pause-slide').hide();
+				$('.btn-stop-slide').hide();
+				$('.btn-play-slide').hide();
+            });
+
+            $('.btn-pause-slide').click(function () {
+                clearTimeout(slideTimeout);
+				$('.btn-pause-slide').hide();
+				$('.btn-play-slide').show();
+            });
+            $('.btn-play-slide').click(function () {
+				$('.btn-play-slide').hide();
+				$('.btn-pause-slide').show();
+                carousel();
+            });
+
+            var myIndex = 0;
+            function carousel() {
+                console.log(myIndex);
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) {
+                    myIndex = 1
+                }
+				
+                x[myIndex - 1].style.display = "block";
+
+                slideTimeout = setTimeout(carousel, 30000); 
+            }
+        </script>
+
+    </body>
+</html>
