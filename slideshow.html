@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <title>W3.CSS</title>
+    <title>PicSlides</title>
+    <link href="images/favicon_books.ico" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -12,12 +13,12 @@
 		margin-right: auto;
 		display: block;
 		max-width:1000px;}
-		body {background-color: black;margin: 0;}
+		body {background-color: #555;margin: 0;}
 
     </style>
     <body>
         <div>
-            <textarea class="textarea-slide form-control" rows="5" placeholder="Paste links here; separate with Enter"></textarea>
+            <textarea class="textarea-slide form-control" rows="5" placeholder="Paste links here; separate with Enter."></textarea>
             <button class="btn-start-slide btn btn-default">Start</button>
             <button class="btn-stop-slide btn btn-default" style="display:none">Stop</button>
 
@@ -26,7 +27,7 @@
         </div>
         <div class="w3-content w3-section slide-container" style="max-width:1000px; " </div>
         <script>
-		
+
 //style="max-width:500px">
 
             $('.btn-start-slide').click(function () {
@@ -80,10 +81,10 @@
                 if (myIndex > x.length) {
                     myIndex = 1
                 }
-				
+
                 x[myIndex - 1].style.display = "block";
 
-                slideTimeout = setTimeout(carousel, 30000); 
+                slideTimeout = setTimeout(carousel, 30000);
             }
         </script>
 
